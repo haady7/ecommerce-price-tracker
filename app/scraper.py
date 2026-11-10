@@ -9,7 +9,7 @@ import requests
 from bs4 import BeautifulSoup
 from flask import current_app
 
-PRICE_PATTERN = re.compile(r"(?:₹|INR|Rs\\.?|रु\\.?)?\\s*([0-9][0-9,]*(?:\\.[0-9]{1,2})?)", re.I)
+PRICE_PATTERN = re.compile(r"(?:₹|INR|Rs\.?|रु\.?)?\s*([0-9][0-9,]*(?:\.[0-9]{1,2})?)", re.I)
 
 class ScrapeError(Exception):
     pass
@@ -34,7 +34,7 @@ def validate_public_url(url):
 def parse_price(value):
     if value is None:
         return None
-    match = PRICE_PATTERN.search(str(value).replace("\\u00a0", " "))
+    match = PRICE_PATTERN.search(str(value).replace("\u00a0", " "))
     if not match:
         return None
     try:
