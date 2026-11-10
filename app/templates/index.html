@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PriceWatch — Price Tracker</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">Price<span>Watch</span></a>
+    <span class="status"><i></i> Price monitoring dashboard</span>
+  </header>
+  <main class="container">
+    <section class="hero">
+      <div><p class="eyebrow">SMART SHOPPING</p><h1>Never miss a price drop.</h1>
+      <p class="sub">Track products, set your target price, and get notified when the price falls.</p></div>
+    </section>
+    <section class="panel">
+      <div class="section-heading"><div><h2>Track a product</h2><p>Add a product URL and your desired price.</p></div></div>
+      <form id="product-form">
+        <label>Product URL<input type="url" id="url" placeholder="https://store.com/product" required></label>
+        <div class="form-row">
+          <label>Target price (₹)<input type="number" id="target_price" min="0.01" step="0.01" placeholder="4999" required></label>
+          <label>Email for alerts<input type="email" id="email" placeholder="you@example.com" required></label>
+        </div>
+        <button id="submit-btn" type="submit">Start tracking <span>→</span></button>
+        <p id="form-message" role="status"></p>
+      </form>
+    </section>
+    <section class="panel">
+      <div class="section-heading"><div><h2>Your tracked products</h2><p>Latest recorded prices and target prices.</p></div>
+      <button class="secondary" id="refresh-btn" type="button">Refresh</button></div>
+      <div class="table-wrap"><table><thead><tr><th>Product</th><th>Current price</th><th>Target price</th><th>Last checked</th><th></th></tr></thead>
+      <tbody id="products-body"><tr><td colspan="5" class="empty">Loading products…</td></tr></tbody></table></div>
+    </section>
+    <p class="footnote">Prices are checked every six hours while this application is running. Website layouts and access policies may affect extraction.</p>
+  </main>
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
