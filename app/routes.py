@@ -7,7 +7,7 @@ from app.scraper import scrape_product, ScrapeError, validate_public_url
 api = Blueprint("api", __name__)
 
 def valid_email(value):
-    return bool(re.fullmatch(r"[^\\s@]+@[^\\s@]+\\.[^\\s@]+", value or ""))
+    return bool(re.fullmatch(r"[^\s@]+@[^\s@]+\.[^\s@]+", value or ""))
 
 @api.get("/")
 def home():
