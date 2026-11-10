@@ -11,9 +11,9 @@ def send_price_alert(to_email, product_name, product_url, price, target):
     message["From"] = cfg["SMTP_FROM"]
     message["To"] = to_email
     message.set_content(
-        f"Good news! The tracked product has reached your target price.\\n\\n"
-        f"Product: {product_name}\\nCurrent price: ₹{price:,.2f}\\n"
-        f"Your target: ₹{target:,.2f}\\nProduct link: {product_url}\\n"
+        f"Good news! The tracked product has reached your target price.\n\n"
+        f"Product: {product_name}\nCurrent price: ₹{price:,.2f}\n"
+        f"Your target: ₹{target:,.2f}\nProduct link: {product_url}\n"
     )
     with smtplib.SMTP(cfg["SMTP_HOST"], cfg["SMTP_PORT"], timeout=20) as server:
         server.ehlo()
